@@ -1,5 +1,3 @@
-# Untitled
-
 # Web Scraping Project: El País Opinion Section
 
 This project is a web scraping script that fetches articles from the "Opinión" section of **El País** (a Spanish news website). It extracts article titles, content, images, translates the titles to English, and analyzes repeated words.
