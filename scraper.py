@@ -39,7 +39,7 @@ def get_opinion_articles(driver, max_articles=5):
     opinion_link.click()
     time.sleep(3)
 
-    articles = driver.find_elements(By.CSS_SELECTOR, "article a")[:max_articles]
+    articles = driver.find_elements(By.CSS_SELECTOR, "article h2 a")[:max_articles]
     article_urls = [a.get_attribute("href") for a in articles if a.get_attribute("href")]
     return article_urls[:max_articles]
 
