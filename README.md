@@ -1,85 +1,126 @@
-# web-scraping
-Web Scraping Project: El País Opinion Section
-This project is a web scraping script that fetches articles from the "Opinión" section of El País (a Spanish news website). It extracts article titles, content, images, translates the titles to English, and analyzes repeated words.
+# Untitled
 
-Requirements
-Python 3.x
+# Web Scraping Project: El País Opinion Section
 
-Internet connection
+This project is a web scraping script that fetches articles from the "Opinión" section of **El País** (a Spanish news website). It extracts article titles, content, images, translates the titles to English, and analyzes repeated words.
 
-A browser (Google Chrome) installed
+## Requirements
 
-A RapidAPI Key for translation API access
+- Python 3.x
+- Internet connection
+- A browser (Google Chrome) installed
+- A **RapidAPI Key** for translation API access
 
-Installation
-1. Clone the repository
+## Installation
+
+### 1. Clone the repository
+
 Clone this repository to your local machine:
 
+```bash
 bash
 Copy
 git clone https://github.com/your-username/web-scraping.git
 cd web-scraping
-2. Set up a virtual environment
+
+```
+
+### 2. Set up a virtual environment
+
 It's recommended to use a virtual environment to manage dependencies.
 
-For Windows:
+### For Windows:
+
+```bash
 bash
 Copy
 python -m venv venv
 .\venv\Scripts\activate
-For macOS/Linux:
+
+```
+
+### For macOS/Linux:
+
+```bash
 bash
 Copy
 python3 -m venv venv
 source venv/bin/activate
-3. Install required dependencies
+
+```
+
+### 3. Install required dependencies
+
 Install the necessary Python packages:
 
+```bash
 bash
 Copy
 pip install -r requirements.txt
-4. Set up .env file
-Create a .env file in the root directory and add the following variables:
 
+```
+
+### 4. Set up **.env** file
+
+Create a `.env` file in the root directory and add the following variables:
+
+```
 plaintext
 Copy
 RAPIDAPI_KEY=your-rapidapi-key
 RAPIDAPI_HOST=rapidapi-host-name
-Replace your-rapidapi-key with your actual RapidAPI key.
 
-5. Install WebDriverManager (Optional)
-You no longer need to manually download and install ChromeDriver. The program now uses WebDriverManager, which automatically handles downloading and managing ChromeDriver for you.
+```
 
-To install WebDriverManager, run the following:
+Replace `your-rapidapi-key` with your actual RapidAPI key.
 
+### 5. Install **WebDriverManager** (Optional)
+
+You no longer need to manually download and install **ChromeDriver**. The program now uses **WebDriverManager**, which automatically handles downloading and managing ChromeDriver for you.
+
+To install **WebDriverManager**, run the following:
+
+```bash
 bash
 Copy
 pip install webdriver-manager
-Running the Program
-1. Start the Program
+
+```
+
+---
+
+## Running the Program
+
+### 1. Start the Program
+
 To start the program, simply run the following command:
 
+```bash
 bash
 Copy
 python scraper.py
-This will begin scraping articles from El País and save the images to the images directory.
 
-2. Output
+```
+
+This will begin scraping articles from **El País** and save the images to the `images` directory.
+
+### 2. Output
+
 The program will:
 
-Print the scraped article titles (in Spanish).
+- Print the scraped article titles (in Spanish).
+- Display a snippet of the article content.
+- Save the images associated with each article in the `images` folder.
+- Translate article titles from Spanish to English.
+- Print any repeated words across the translated titles.
 
-Display a snippet of the article content.
+If no repeated words are found, the program will print: `No Repeated Words`.
 
-Save the images associated with each article in the images folder.
+---
 
-Translate article titles from Spanish to English.
+## Project Structure
 
-Print any repeated words across the translated titles.
-
-If no repeated words are found, the program will print: No Repeated Words.
-
-Project Structure
+```
 plaintext
 Copy
 web-scraping/
@@ -91,3 +132,5 @@ web-scraping/
 ├── README.md              # Project documentation (this file)
 ├── .gitignore             # Git ignore file
 └── image.png              # Image for directory reference (optional)
+
+```
