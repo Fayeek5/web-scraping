@@ -16,8 +16,6 @@ This project is a web scraping script that fetches articles from the "Opinión" 
 Clone this repository to your local machine:
 
 ```bash
-bash
-Copy
 git clone https://github.com/your-username/web-scraping.git
 cd web-scraping
 
@@ -30,8 +28,6 @@ It's recommended to use a virtual environment to manage dependencies.
 ### For Windows:
 
 ```bash
-bash
-Copy
 python -m venv venv
 .\venv\Scripts\activate
 
@@ -40,8 +36,6 @@ python -m venv venv
 ### For macOS/Linux:
 
 ```bash
-bash
-Copy
 python3 -m venv venv
 source venv/bin/activate
 
@@ -52,8 +46,6 @@ source venv/bin/activate
 Install the necessary Python packages:
 
 ```bash
-bash
-Copy
 pip install -r requirements.txt
 
 ```
@@ -63,10 +55,8 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory and add the following variables:
 
 ```
-plaintext
-Copy
 RAPIDAPI_KEY=your-rapidapi-key
-RAPIDAPI_HOST=rapidapi-host-name
+RAPIDAPI_HOST=rapid-translate-multi-traduction.p.rapidapi.com
 
 ```
 
@@ -79,8 +69,6 @@ You no longer need to manually download and install **ChromeDriver**. The progra
 To install **WebDriverManager**, run the following:
 
 ```bash
-bash
-Copy
 pip install webdriver-manager
 
 ```
@@ -94,8 +82,6 @@ pip install webdriver-manager
 To start the program, simply run the following command:
 
 ```bash
-bash
-Copy
 python scraper.py
 
 ```
