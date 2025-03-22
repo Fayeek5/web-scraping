@@ -169,7 +169,10 @@ def main():
 
         # Repeated words
         repeated_words = analyze_headers(titles_en)
-        print("\nRepeated Words (more than twice):")
+        if(len(repeated_words.items())):
+            print("\nRepeated Words (more than twice):")
+        else:
+            print("\nNo Repeated Words")
         for word, cnt in repeated_words.items():
             print(f"{word}: {cnt}")
 
