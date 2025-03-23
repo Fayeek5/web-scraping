@@ -52,7 +52,7 @@ def setup_browserstack_driver(config):
             'userName': BROWSERSTACK_USERNAME,
             'accessKey': BROWSERSTACK_ACCESS_KEY,
             'local': 'false',
-            'seleniumVersion': '3.141.59'
+            'seleniumVersion': '4.29.0'
         }
     }
 
