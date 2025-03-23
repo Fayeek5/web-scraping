@@ -7,6 +7,9 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from collections import Counter
 from dotenv import load_dotenv
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -31,17 +34,34 @@ def setup_driver(headless=True):
 # --------------------------
 # Scrape article links
 # --------------------------
+
 def get_opinion_articles(driver, max_articles=5):
     driver.get("https://elpais.com/")
-    time.sleep(2)
+    
+    wait = WebDriverWait(driver, 15)
 
-    opinion_link = driver.find_element(By.LINK_TEXT, "Opinión")
+    # Wait until cookie consent button appears and click to accept or close
+    try:
+        consent_button = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, '//button[contains(@id, "didomi-notice-agree-button") or contains(text(), "Aceptar")]')
+        ))
+        consent_button.click()
+        print("Cookie consent popup closed.")
+    except Exception as e:
+        print("No cookie consent button found or already closed.")
+
+    # Wait until "Opinión" link is clickable
+    opinion_link = wait.until(EC.element_to_be_clickable(
+        (By.LINK_TEXT, "Opinión")
+    ))
     opinion_link.click()
-    time.sleep(3)
+
+    wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "article h2 a")))
 
     articles = driver.find_elements(By.CSS_SELECTOR, "article h2 a")[:max_articles]
     article_urls = [a.get_attribute("href") for a in articles if a.get_attribute("href")]
-    return article_urls[:max_articles]
+
+    return article_urls
 
 # --------------------------
 # Extract article data
