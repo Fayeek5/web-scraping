@@ -1,19 +1,33 @@
+
 # Web Scraping Project: El País Opinion Section
 
-This project is a web scraping script that fetches articles from the "Opinión" section of **El País** (a Spanish news website). It extracts article titles, content, images, translates the titles to English, and analyzes repeated words.
+This project demonstrates web scraping, API integration, text processing, and cross-browser testing skills. The script fetches articles from the "Opinión" section of **El País**, extracts article titles, content, images, translates titles to English using RapidAPI, analyzes repeated words, and performs cross-browser parallel testing using **BrowserStack**.
 
-## Requirements
+---
+
+## 🚀 Features
+
+- **Web Scraping** using Selenium (Python)
+- **Translation API Integration** (RapidAPI)
+- **Text Analysis** for repeated words
+- **Cross-Browser Parallel Testing** (BrowserStack)
+- **Headless browser support** for automated scraping
+- Automatic **image downloading** and storing locally
+
+---
+
+## ✅ Requirements
 
 - Python 3.x
-- Internet connection
-- A browser (Google Chrome) installed
-- A **RapidAPI Key** for translation API access
+- Chrome browser (for local scraping)
+- A **RapidAPI Key** for translations ([Rapid Translate Multi Traduction API](https://rapidapi.com/))
+- **BrowserStack Account** for parallel testing ([BrowserStack](https://www.browserstack.com/))
 
-## Installation
+---
+
+## 📦 Installation
 
 ### 1. Clone the repository
-
-Clone this repository to your local machine:
 
 ```bash
 git clone https://github.com/your-username/web-scraping.git
@@ -23,9 +37,9 @@ cd web-scraping
 
 ### 2. Set up a virtual environment
 
-It's recommended to use a virtual environment to manage dependencies.
+Using a virtual environment is recommended:
 
-### For Windows:
+**Windows:**
 
 ```bash
 python -m venv venv
@@ -33,7 +47,7 @@ python -m venv venv
 
 ```
 
-### For macOS/Linux:
+**macOS/Linux:**
 
 ```bash
 python3 -m venv venv
@@ -41,80 +55,107 @@ source venv/bin/activate
 
 ```
 
-### 3. Install required dependencies
-
-Install the necessary Python packages:
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 
 ```
 
-### 4. Set up **.env** file
+### 4. Configure environment variables (`.env` file)
 
-Create a `.env` file in the root directory and add the following variables:
-
-```
-RAPIDAPI_KEY=your-rapidapi-key
-RAPIDAPI_HOST=rapid-translate-multi-traduction.p.rapidapi.com
-
-```
-
-Replace `your-rapidapi-key` with your actual RapidAPI key.
-
-### 5. Install **WebDriverManager** (Optional)
-
-You no longer need to manually download and install **ChromeDriver**. The program now uses **WebDriverManager**, which automatically handles downloading and managing ChromeDriver for you.
-
-To install **WebDriverManager**, run the following:
+Create a `.env` file in your project root:
 
 ```bash
-pip install webdriver-manager
+RAPIDAPI_KEY=your-rapidapi-key
+RAPIDAPI_HOST=rapid-translate-multi-traduction.p.rapidapi.com
+BROWSERSTACK_USERNAME=your-browserstack-username
+BROWSERSTACK_ACCESS_KEY=your-browserstack-access-key
 
 ```
+
+Replace placeholders with your actual credentials.
 
 ---
 
-## Running the Program
+## 🛠️ Running the Program
 
-### 1. Start the Program
+### 🔸 Scraping and Translation (Locally)
 
-To start the program, simply run the following command:
+Run the main scraping script:
 
 ```bash
 python scraper.py
 
 ```
 
-This will begin scraping articles from **El País** and save the images to the `images` directory.
+**Output includes:**
 
-### 2. Output
-
-The program will:
-
-- Print the scraped article titles (in Spanish).
-- Display a snippet of the article content.
-- Save the images associated with each article in the `images` folder.
-- Translate article titles from Spanish to English.
-- Print any repeated words across the translated titles.
-
-If no repeated words are found, the program will print: `No Repeated Words`.
+- Titles of articles (Spanish)
+- Snippets of article content
+- Translated titles (English)
+- Analysis of repeated words across translated titles
+- Images saved in `images/` folder
 
 ---
 
-## Project Structure
+### 🌐 Cross-Browser Testing (BrowserStack)
+
+Run cross-browser tests using BrowserStack parallel threads:
+
+```bash
+python browsersack_test.py
 
 ```
-plaintext
-Copy
+
+**This script performs parallel scraping tests across:**
+
+| Device Type | Browser | OS/Device |
+| --- | --- | --- |
+| Desktop | Chrome | Windows 10 |
+| Desktop | Firefox | macOS Monterey |
+| Mobile | Safari | iPhone 13 (iOS 15) |
+| Mobile | Chrome | Samsung Galaxy S22 (Android 12) |
+| Tablet | Safari | iPad Pro 12.9" (iOS 15) |
+
+---
+
+## 🗂️ Project Structure
+
+```
 web-scraping/
 │
-├── images/                # Folder to save article images
-├── scraper.py             # Main Python script to run the scraping
-├── .env                   # Environment file to store API keys
-├── requirements.txt       # List of required Python packages
-├── README.md              # Project documentation (this file)
-├── .gitignore             # Git ignore file
-└── image.png              # Image for directory reference (optional)
+├── images/                     # Saved article images
+├── scraper.py                  # Main scraping script
+├── browsersack_test.py         # BrowserStack parallel testing script
+├── .env                        # Environment variables (API keys)
+├── requirements.txt            # Python dependencies
+├── README.md                   # Project documentation (this file)
+└── .gitignore                  # Git ignore rules
 
 ```
+
+---
+
+## 📌 Dependencies
+
+Your `requirements.txt` should include at minimum:
+
+```
+nginx
+CopyEdit
+selenium
+webdriver-manager
+beautifulsoup4
+python-dotenv
+requests
+
+```
+
+---
+
+## 🧑‍💻 Notes & Troubleshooting
+
+- Ensure your BrowserStack credentials have appropriate permissions.
+- Ensure RapidAPI quotas and limits are sufficient for your usage.
+- BrowserStack tests can fail if your internet connection is unstable.
