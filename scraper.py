@@ -30,9 +30,11 @@ def get_opinion_articles(driver, max_articles=5):
 
     # Handle cookie consent popup
     try:
-        consent_button = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, '//button[contains(@id, "didomi-notice-agree-button") or contains(., "Aceptar")]')
-        ))
+        consent_button = WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, "//*[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'accept and continue') or contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'aceptar') or contains(@id, 'didomi-notice-agree-button') or contains(@class, 'accept')]")
+            )
+        )
         consent_button.click()
         print("Cookie consent popup closed.")
     except Exception as e:
