@@ -3,6 +3,8 @@ import requests
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from collections import Counter
 from dotenv import load_dotenv
@@ -51,14 +53,14 @@ def get_opinion_articles(driver, max_articles=5):
         opinion_link.click()
         print("Navigated to Opinión section.")
     except Exception as e:
-        print(f"Error finding Opinión link: {e}")
+        print(f"Error finding Opinión link: {e}") 
         return []
 
     # Wait for article links and scrape
     try:
         wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "article h2 a")))
         articles = driver.find_elements(By.CSS_SELECTOR, "article h2 a")[:max_articles]
-        article_urls = [a.get_attribute("href") for a in articles if a.get_attribute("href")]
+        article_urls = [a.get_attribute("href") for a in articles if a.get_attribute("href")] # list comprehension
         print(f"Found {len(article_urls)} article URLs: {article_urls}")
         return article_urls
     except Exception as e:
@@ -68,7 +70,7 @@ def get_opinion_articles(driver, max_articles=5):
 # --------------------------
 # Extract article data
 # --------------------------
-def extract_article_data(driver, url, save_img_dir="images"):
+def extract_article_data(driver, url, save_img_dir="images"): # https://elpais.com/opinion/2025-03-28/bolsonaro-a-juicio.html
     driver.get(url)
     wait = WebDriverWait(driver, 20)
 
@@ -167,9 +169,7 @@ def analyze_headers(headers):
 # --------------------------
 # Main (for local testing)
 # --------------------------
-def main():
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
+def main():  
     chrome_options = Options()
     chrome_options.add_argument("--lang=es")
     driver = webdriver.Chrome(options=chrome_options)
@@ -189,7 +189,7 @@ def main():
                 print(f"Image saved at: {data['image_path']}")
             print("-" * 50)
 
-        titles_es = [a['title'] for a in articles_data]
+        titles_es = [a['title'] for a in articles_data] # List Comprehension
         print("Titles (ES):", titles_es)
         titles_en = translate_titles_rapidapi(titles_es)
 
